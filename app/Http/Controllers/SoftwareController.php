@@ -34,11 +34,25 @@ class SoftwareController extends Controller
     {}
 
     public function edit(Software $software)
-    {}
+    {
+        $companies = Company::all();
+        return view('employee.edit_softwares', compact('software','companies'));
+    }
 
     public function update (UpdateSoftwareRequest $request, Software $software)
-    {}
+    {
+        $software->update($request->validated());
+        return redirect()
+               ->route('employee.softwares.index')
+               ->with('success','Software updated successfully');
+    }
 
     public function destroy (Software $software)
-    {}
+    {
+        $software->delete();
+        return redirect()
+               ->route('employee.softwares.index')
+               ->with('success','Software deleted successfully');
+
+    }
 }
