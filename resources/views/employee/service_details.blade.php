@@ -77,12 +77,12 @@
         <div class="md:hidden space-y-4 mt-6">
             @forelse($services as $service)
                 <div class="border rounded-lg p-4 bg-white shadow">
-                    <div><span class="font-semibold">Name:</span> {{ $service->name }}</div>
+                    <div> <p class="text-orange-500 font-bold text-center text-lg mb-5">{{ $service->name }}</p> </div>
                     <div><span class="font-semibold">Service Date:</span> {{ $service->service_date }}</div>
-                    <div><span class="font-semibold">Description:</span> </div>
-                    <div><span class="font-semibold"> {{ $service->description }}</div>
+                    <div><span class="font-semibold ">Description:</span> </div>
+                    <div> <p class="text-justify mx-2">{{ $service->description }}</p></div>
                     
-                    <div class="mt-4 flex justify-between">
+                    <div class="mt-6 flex justify-between">
                         <a 
                             href="{{ route('employee.services.edit', $service) }}"
                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-2 py-1 rounded-md shadow transition">

@@ -5,5 +5,10 @@
         </h2>
     </x-slot>
 
-    <div class="p-6">Welcome, Employee!</div>
+    <div class="p-6 ">
+        <p class="text-xl text-center md:text-left md:text-3xl">
+            Welcome, {{ Auth::user()->name }} !!
+        </p>
+
+    </div>
 </x-app-layout>
