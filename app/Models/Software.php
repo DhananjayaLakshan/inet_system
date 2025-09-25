@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Software extends Model
 {
+
+    use HasFactory;
+
+    // 👇 Explicitly tell Laravel which table to use
+    protected $table = 'softwares';
     protected $fillable =[
         'company_id',
         'name',
