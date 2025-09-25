@@ -17,7 +17,6 @@ class StoreSoftwareRequest extends FormRequest
     {
         return [
             'company_id'        => ['required', 'exists:companies,id'], // ✅ ensure company exists
-            'name'              => ['required' , 'string' , 'max:255'],
             'user'              => ['required' , 'string' , 'max:255'],
             'installed_date'    => ['required', 'date'],
             'expiration_date'   =>['required', 'date', 'after:installed_date'], // ✅ better rule

@@ -14,7 +14,6 @@ class Software extends Model
     protected $table = 'softwares';
     protected $fillable =[
         'company_id',
-        'name',
         'user',
         'installed_date',
         'expiration_date',

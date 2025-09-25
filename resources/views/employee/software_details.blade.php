@@ -18,7 +18,7 @@
         <div class="mb-4">
             <a href="{{ route('employee.softwares.create') }}"
                class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md shadow transition">
-                + Add Company
+                + Add Software
             </a>
         </div>
 
@@ -39,7 +39,7 @@
                 <tbody>
                     @forelse($softwares as $software)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-2 border">{{ $software->name }}</td>
+                            <td class="px-4 py-2 border">{{ $software->company->name }}</td>
                             <td class="px-4 py-2 border">{{ $software->user }}</td>
                             <td class="px-4 py-2 border">{{ $software->installed_date }}</td>
                             <td class="px-4 py-2 border">{{ $software->expiration_date }}</td>
