@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Company Details') }}
+            {{ __('Service Details') }}
         </h2>
     </x-slot>
 
@@ -29,7 +29,7 @@
                     <tr>
                         <th class="px-4 py-2 text-left border">Name</th>
                         <th class="px-4 py-2 text-left border">Serviced Date</th>
-                        <th class="px-4 py-2 text-left border">Description</th>
+                        <th class="px-4 py-2 text-left border w-[45rem]">Description</th>
                         <th class="px-4 py-2 text-left border">Action</th>
                     </tr>
                 </thead>

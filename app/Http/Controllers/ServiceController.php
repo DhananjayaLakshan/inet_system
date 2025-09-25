@@ -15,9 +15,19 @@ class ServiceController extends Controller
         return view("employee.service_details", compact("services"));
     }
 
-    public function create(){}
+    public function create()
+    {
+        return view('employee.add_services');
+    }
 
-    public function store(StoreServiceRequest $request) {}
+    public function store(StoreServiceRequest $request) 
+    {
+        Service::create($request->validated());
+
+        return redirect()
+        ->route('employee.services.index')
+        ->with('success','Service added successfully');
+    }
 
     public function edit(Service $service){}
 
