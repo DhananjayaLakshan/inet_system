@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('company_id')
                   ->constrained('companies')// references id on companies
                   ->onDelete('cascade');// if a company is deleted, delete its softwares
-            $table->string('name');
             $table->string('user');
             $table->date('installed_date');
             $table->date('expiration_date');
