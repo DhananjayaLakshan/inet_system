@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('employee.company-details.index')" :active="request()->routeIs('employee.company-details.index')">
                         {{ __('Company Details') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('employee.services.index')" :active="request()->routeIs('employee.services.index')">
+                        {{ __('Services') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -75,6 +78,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('employee.company-details.index')" :active="request()->routeIs('employee.company-details.index')">
                 {{ __('Company Details') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('employee.services.index')" :active="request()->routeIs('employee.services.index')">
+                {{ __('Services') }}
             </x-responsive-nav-link>
             
         </div>

@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function index(){}
+    public function index()
+    {
+        $services = Service::latest()->paginate(10);
+        return view("employee.service_details", compact("services"));
+    }
 
     public function create(){}
 
