@@ -17,5 +17,10 @@ class Company extends Model
         'backup_employee',
     ];
 
+    public function software()
+    {
+        return $this->hasMany(Software::class);
+    }
+
     
 }
