@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CompanyDetails;
+use App\Http\Controllers\HardwareController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SoftwareController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,9 @@ Route::middleware(['auth', 'role:employee'])
         ->except(['show']);
 
         Route::resource('softwares', SoftwareController::class)
+        ->except(['show']);
+
+        Route::resource('hardwares', HardwareController::class)
         ->except(['show']);
 
         

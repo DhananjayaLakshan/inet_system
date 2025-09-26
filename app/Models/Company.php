@@ -22,5 +22,15 @@ class Company extends Model
         return $this->hasMany(Software::class);
     }
 
+    public function hardware()
+    {
+        return $this->hasMany(Hardware::class);
+    }
+
+    public function visits()
+    {
+        return $this->hasMany(CompanyVisit::class);
+    }
+
     
 }
