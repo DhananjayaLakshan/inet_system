@@ -44,16 +44,16 @@ class User extends Authenticatable
         return $this->role === 'employee';
     }
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function visits()
+    {
+        return $this->hasMany(CompanyVisit::class);
     }
 }

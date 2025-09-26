@@ -27,5 +27,10 @@ class Company extends Model
         return $this->hasMany(Hardware::class);
     }
 
+    public function visits()
+    {
+        return $this->hasMany(CompanyVisit::class);
+    }
+
     
 }
