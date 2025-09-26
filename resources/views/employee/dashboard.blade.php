@@ -87,13 +87,14 @@
                         <h4 class="font-bold text-orange-600">{{ $visitsForCompany->first()->company->name }}</h4>
                         <p>Total Visits: <strong>{{ $visitsForCompany->count() }}</strong></p>
                         <ul class="list-disc list-inside text-gray-700">
-                            @foreach($visitsForCompany as $visit)
-                                <li>
-                                    <span class="font-semibold">{{ $visit->user->name }}</span>
-                                    visited on {{ $visit->visit_date }}
-                                    ({{ $visit->visit_time }} → {{ $visit->leave_time }})
-                                    → Work: {{ $visit->work_done }}
-                                </li>
+                            @foreach($visitsForCompany as $visit)                                    
+                                    <div class="mb-3">
+                                        <p class="font-semibold text-lg mt-3">{{ $visit->user->name }}</p>
+                                        <p><strong>Date:</strong> {{ $visit->visit_date }}</p>
+                                        <p><strong>Time:</strong> ({{ $visit->visit_time }} → {{ $visit->leave_time }})</p>
+                                        <p><strong>Work:</strong></p>
+                                        <p class="text-justify">{{ $visit->work_done }}</p>
+                                    </div>                               
                             @endforeach
                         </ul>
                     </div>
@@ -114,6 +115,7 @@
                             <th class="px-4 py-2 text-left border">Employee</th>
                             <th class="px-4 py-2 text-left border">Visit Date</th>
                             <th class="px-4 py-2 text-left border">Work Done</th>
+                            <th class="px-4 py-2 text-left border">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -123,6 +125,23 @@
                                 <td class="px-4 py-2 border">{{ $visit->user->name }}</td>
                                 <td class="px-4 py-2 border">{{ $visit->visit_date }}</td>
                                 <td class="px-4 py-2 border">{{ $visit->work_done }}</td>
+                                <td class="px-4 py-2 border">
+                                <a href="{{ route('employee.visits.edit', $visit) }}"
+                                   class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-2 py-1 rounded-md shadow transition">
+                                    Edit
+                                </a>
+                                <form 
+                                action="{{ route('employee.visits.destroy', $visit) }}" 
+                                method="POST"
+                                onsubmit="return confirm('Are you sure you want to delete this software?');"
+                                class="inline-block ml-2">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="inline-block bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 rounded-md shadow transition">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
                             </tr>
                         @empty
                             <tr>
@@ -136,13 +155,32 @@
             </div>
 
             {{-- Mobile cards --}}
-            <div class="md:hidden space-y-4">
+            <div class="md:hidden">
                 @forelse($visits as $visit)
-                    <div class="bg-white p-4 rounded shadow-md">
+                    <div class="bg-white p-4 rounded shadow-md mb-5">
                         <p class="text-orange-500 text-lg font-bold">{{ $visit->company->name }}</p>
                         <p><strong>Employee:</strong> {{ $visit->user->name }}</p>
                         <p><strong>Date:</strong> {{ $visit->visit_date }}</p>
-                        <p><strong>Work:</strong> {{ $visit->work_done }}</p>
+                        <p><strong>Work:</strong> </p>
+                        <p class="text-justify">{{ $visit->work_done }} </p>
+                        <div class="mt-4 flex justify-between">
+                            <a href="{{ route('employee.visits.edit', $visit) }}"
+                            class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-2 py-1 rounded-md shadow transition">
+                                    Edit
+                            </a>
+                            <form 
+                            action="{{ route('employee.visits.destroy', $visit) }}" 
+                            method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this software?');"
+                            class="inline-block ml-2">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="inline-block bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 rounded-md shadow transition">
+                                    Delete
+                                </button>
+                            </form>
+                        
+                        </div>
                     </div>
                 @empty
                     <p class="text-gray-500 text-center">No visits found.</p>

@@ -91,24 +91,5 @@ class VisitController extends Controller
             ->route('employee.visits.index')
             ->with('success', 'Visit record deleted successfully.');
     }
-
-    // public function weeklyReport()
-    // {
-    //     $startOfWeek = Carbon::now()->startOfWeek();
-    //     $endOfWeek   = Carbon::now()->endOfWeek();
-
-    //     $weeklyVisits = CompanyVisit::with(['company', 'user'])
-    //         ->whereBetween('visit_date', [$startOfWeek, $endOfWeek])
-    //         ->get()
-    //         ->groupBy('company_id');
-
-    //     // Structure:
-    //     // [
-    //     //   company_id => Collection of visits
-    //     // ]
-
-    //     return view('employee.visits.weekly_report', compact('weeklyVisits', 'startOfWeek', 'endOfWeek'));
-    // }
-
-
+    
 }
