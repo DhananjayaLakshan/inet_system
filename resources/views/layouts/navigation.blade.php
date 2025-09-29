@@ -27,6 +27,9 @@
                     <x-nav-link :href="route('employee.hardwares.index')" :active="request()->routeIs('employee.hardwares.index')">
                         {{ __('Hardwares & Items') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('employee.payments.index')" :active="request()->routeIs('employee.payments.index')">
+                        {{ __('Payments') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -94,7 +97,9 @@
             <x-responsive-nav-link :href="route('employee.hardwares.index')" :active="request()->routeIs('employee.hardwares.index')">
                 {{ __('Hardware & Items') }}
             </x-responsive-nav-link>
-            
+            <x-responsive-nav-link :href="route('employee.payments.index')" :active="request()->routeIs('employee.payments.index')">
+                {{ __('Payments') }}
+            </x-responsive-nav-link>            
         </div>
 
         <!-- Responsive Settings Options -->
