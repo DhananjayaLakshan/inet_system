@@ -28,15 +28,10 @@
         {{-- Employee --}}
         <div class="mb-5">
             <label for="user_id" class="block mb-2 text-sm font-medium">Employee</label>
-            <select name="user_id" id="user_id"
-                class="w-full border rounded px-3 py-2 focus:ring focus:ring-orange-200">
-                <option value="">-- Select Employee --</option>
-                @foreach($employees as $employee)
-                    <option value="{{ $employee->id }}" {{ old('user_id', $visit->user_id) == $employee->id ? 'selected' : '' }}>
-                        {{ $employee->name }}
-                    </option>
-                @endforeach
-            </select>
+            <input type="text" name="user_name" id="user_name" value="{{ Auth::user()->name }}"
+                class="w-full border rounded px-3 py-2 focus:ring focus:ring-orange-200" disabled>
+            <input hidden type="text" name="user_id" id="user_id" value="{{ $visit->user_id }}"
+                class="w-full border rounded px-3 py-2 focus:ring focus:ring-orange-200">            
             @error('user_id') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
         </div>
 

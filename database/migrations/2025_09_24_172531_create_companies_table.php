@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone_number');
             $table->string('location');
+            $table->string('link');
             $table->string('employee');
             $table->string('backup_employee');
             $table->timestamps();
