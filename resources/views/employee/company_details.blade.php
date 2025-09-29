@@ -51,6 +51,7 @@
                                 <form 
                                 action="{{ route('employee.company-details.destroy', $company) }}" 
                                 method="POST"
+                                onsubmit="return confirm('Are you sure you want to delete this software?');"
                                 class="inline-block ml-2">
                                     @csrf
                                     @method('DELETE')
@@ -93,6 +94,7 @@
                         <form 
                         action="{{ route('employee.company-details.destroy', $company) }}" 
                         method="POST"
+                        onsubmit="return confirm('Are you sure you want to delete this software?');"
                         class="inline-block ml-2">
                             @csrf
                             @method('DELETE')

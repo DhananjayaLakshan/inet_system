@@ -5,13 +5,14 @@ use App\Http\Controllers\CompanyDetails;
 use App\Http\Controllers\HardwareController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SoftwareController;
+use App\Http\Controllers\VisitController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'role:employee'])
     ->prefix('employee')
     ->as('employee.')
     ->group(function () {
-        Route::get('/dashboard', [EmployeeController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [VisitController::class, 'index'])->name('dashboard');
 
         /**
          * /employee/company-details
@@ -32,6 +33,9 @@ Route::middleware(['auth', 'role:employee'])
         ->except(['show']);
 
         Route::resource('hardwares', HardwareController::class)
+        ->except(['show']);
+
+        Route::resource('visits', VisitController::class)
         ->except(['show']);
 
         

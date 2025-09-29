@@ -15,6 +15,8 @@ class CompanyVisit extends Model
         'work_done',
     ];
 
+    protected $table = 'company_visits'; 
+
     public function user()
     {
         return $this->belongsTo(User::class);
