@@ -33,6 +33,15 @@
         </div>
 
         <div class="mb-5">
+            <label for="link" class="block mb-2 text-sm font-medium text-gray-900">Location link</label>
+            <input type="text" name="link" id="link"
+                   value="{{ old('link', $company->link) }}"
+                   class="w-full px-3 py-2 border rounded focus:ring focus:ring-orange-200"
+                   required>
+            @error('link') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
+        </div>
+
+        <div class="mb-5">
             <label for="employee" class="block mb-2 text-sm font-medium">Assigned Employee</label>
             <input type="text" name="employee" id="employee" value="{{ old('employee', $company->employee) }}"
                    class="w-full px-3 py-2 border rounded focus:ring focus:ring-orange-200">

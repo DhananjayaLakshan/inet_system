@@ -17,6 +17,7 @@ class UpdateCompanyRequest extends FormRequest
             'name'            => ['required', 'string', 'max:255'],
             'phone_number'    => ['required', 'string', 'max:20'],
             'location'        => ['required', 'string', 'max:255'],
+            'link'            => ['required', 'string', 'max:255'],
             'employee'        => ['required', 'string', 'max:255'],
             'backup_employee' => ['nullable', 'string', 'max:255'],
         ];

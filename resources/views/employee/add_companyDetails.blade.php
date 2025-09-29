@@ -35,6 +35,15 @@
                    required>
             @error('location') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
         </div>
+        
+        <div class="mb-5 mx-5">
+            <label for="link" class="block mb-2 text-sm font-medium text-gray-900">Location link</label>
+            <input type="text" name="link" id="link"
+                   value="{{ old('link') }}"
+                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                   required>
+            @error('link') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
+        </div>
 
         <div class="mb-5 mx-5">
             <label for="employee" class="block mb-2 text-sm font-medium text-gray-900">Assigned Employee</label>

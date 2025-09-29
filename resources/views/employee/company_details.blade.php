@@ -40,7 +40,11 @@
                         <tr class="hover:bg-gray-50">
                             <td class="px-4 py-2 border">{{ $company->name }}</td>
                             <td class="px-4 py-2 border">{{ $company->phone_number }}</td>
-                            <td class="px-4 py-2 border">{{ $company->location }}</td>
+                            <td class="px-4 py-2 border">
+                                <a href="{{ $company->link }}" target="_blank" rel="noopener noreferrer">
+                                    {{ $company->location }}
+                                </a>
+                            </td>
                             <td class="px-4 py-2 border">{{ $company->employee }}</td>
                             <td class="px-4 py-2 border">{{ $company->backup_employee }}</td>
                             <td class="px-4 py-2 border">

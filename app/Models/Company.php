@@ -13,6 +13,7 @@ class Company extends Model
         'name',
         'phone_number',
         'location',
+        'link',
         'employee',
         'backup_employee',
     ];
@@ -30,6 +31,11 @@ class Company extends Model
     public function visits()
     {
         return $this->hasMany(CompanyVisit::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 
     
