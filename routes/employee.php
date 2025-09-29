@@ -3,9 +3,11 @@
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CompanyDetails;
 use App\Http\Controllers\HardwareController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SoftwareController;
 use App\Http\Controllers\VisitController;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'role:employee'])
@@ -36,6 +38,9 @@ Route::middleware(['auth', 'role:employee'])
         ->except(['show']);
 
         Route::resource('visits', VisitController::class)
+        ->except(['show']);
+
+        Route::resource('payments', PaymentController::class)
         ->except(['show']);
 
         
