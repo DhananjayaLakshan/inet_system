@@ -39,7 +39,7 @@
 
         {{-- Weekly Report Tab --}}
         <div x-show="tab === 'weekly'" class="mt-6">
-            <div class="md:mx-auto bg-white p-4 rounded shadow md:max-w-[80%]">
+            <div class="md:mx-auto bg-white p-4 rounded shadow md:max-w-[81%]">
 
                 {{-- Week selector --}}
                 <form method="GET" action="{{ route('employee.dashboard') }}" class="mb-4 flex flex-col md:flex-row md:items-center gap-3">
