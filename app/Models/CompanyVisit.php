@@ -26,4 +26,10 @@ class CompanyVisit extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'company_id', 'company_id')
+                    ->whereColumn('date', 'visit_date');
+    }
 }

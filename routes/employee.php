@@ -39,9 +39,7 @@ Route::middleware(['auth', 'role:employee'])
         Route::resource('visits', VisitController::class)
         ->except(['show']);
 
-        Route::resource('payments', PaymentController::class)
-        ->except(['show']);
-
-        
+        Route::resource('payments', PaymentController::class)->except(['show']);
+    
 
     });

@@ -15,7 +15,7 @@
         @endif
 
         {{-- Add company button --}}
-        <div class="mb-4">
+        <div class="mb-4 flex justify-end max-w-[80%] mx-auto">
             <a href="{{ route('employee.hardwares.create') }}"
                class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md shadow transition">
                 + Add Hardware
@@ -23,14 +23,14 @@
         </div>
 
         {{-- Desktop table --}}
-        <div class="overflow-x-auto">
+        <<div class="hidden md:block overflow-x-auto max-w-[80%] mx-auto sm:px-6 lg:px-8 bg-white p-6 rounded shadow">
             <table class="hidden md:table min-w-full border bg-white border-gray-200">
                 <thead class="bg-orange-100">
                     <tr>
-                        <th class="px-4 py-2 text-left border">Company Name</th>
-                        <th class="px-4 py-2 text-left border">User</th>
-                        <th class="px-4 py-2 text-left border">Date</th>
-                        <th class="px-4 py-2 text-left border">Warranty</th>
+                        <th class="px-4 py-2 text-left border w-[10rem]">Company Name</th>
+                        <th class="px-4 py-2 text-left border w-[10rem]">User</th>
+                        <th class="px-4 py-2 text-left border w-[10rem]">Date</th>
+                        <th class="px-4 py-2 text-left border w-[10rem]">Warranty</th>
                         <th class="px-4 py-2 text-left border">Brand</th>
                         <th class="px-4 py-2 text-left border w-[25rem]">Description</th>
                         <th class="px-4 py-2 text-left border">Action</th>
