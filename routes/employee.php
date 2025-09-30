@@ -25,8 +25,7 @@ Route::middleware(['auth', 'role:employee'])
          * /employee/company-details/{company}
         */
         Route::resource('company-details', CompanyDetails::class)
-        ->parameters(['company-details' => 'company'])
-        ->except(['show']);
+        ->parameters(['company-details' => 'company']);
 
         Route::resource('services', ServiceController::class)
         ->except(['show']);

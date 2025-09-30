@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('name')->nullable();
+            $table->string('company_id')->constrained('companies')->onDelete('cascade');
             $table->date('service_date')->nullable();
+            $table->date('next_service_date')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

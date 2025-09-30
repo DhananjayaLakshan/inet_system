@@ -10,12 +10,18 @@
         @csrf
 
         <div class="mb-5 mx-5">
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Company Name</label>
-            <input type="text" name="name" id="name"
-                   value="{{ old('name') }}"
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
-                   required>
-            @error('name') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
+            <label for="company_id" class="block mb-2 text-sm font-medium text-gray-900">Company</label>
+            <select name="company_id" id="company_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                    required>
+                <option value="">-- Select a Company --</option>
+                @foreach($companies as $company)
+                    <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
+                        {{ $company->name }}
+                    </option>
+                @endforeach
+            </select>
+            @error('company_id') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
         </div>
 
         <div class="mb-5 mx-5">
@@ -25,6 +31,15 @@
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
                    required>
             @error('service_date') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
+        </div>
+
+        <div class="mb-5 mx-5">
+            <label for="next_service_date" class="block mb-2 text-sm font-medium text-gray-900">Next Service Date</label>
+            <input type="date" name="next_service_date" id="next_service_date"
+                   value="{{ old('next_service_date') }}"
+                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                   required>
+            @error('next_service_date') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
         </div>
 
         <div class="mb-5 mx-5">

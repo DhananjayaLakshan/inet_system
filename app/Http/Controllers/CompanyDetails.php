@@ -28,7 +28,15 @@ class CompanyDetails extends Controller
 
     }
     
-    public function show($id){}
+    public function show(Company $company)
+    {
+        $company->load([
+            'services' => fn($q) => $q->latest()->limit(10),
+            'softwares' => fn($q) => $q->latest()->limit(10),
+            'hardwares' => fn($q) => $q->latest()->limit(10),
+        ]); 
+        return view('employee.show_companyDetails', compact('company'));
+    }
 
     public function edit(Company $company){
         return view('employee.edit_companyDetails', compact('company'));

@@ -36,7 +36,7 @@
                 <tbody>
                     @forelse($services as $service)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-2 border">{{ $service->name }}</td>
+                            <td class="px-4 py-2 border">{{ $service->company->name }}</td>
                             <td class="px-4 py-2 border">{{ $service->service_date }}</td>
                             <td class="px-4 py-2 border">{{ $service->description }}</td>
                             

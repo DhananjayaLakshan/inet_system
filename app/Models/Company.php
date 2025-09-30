@@ -18,12 +18,12 @@ class Company extends Model
         'backup_employee',
     ];
 
-    public function software()
+    public function softwares()
     {
         return $this->hasMany(Software::class);
     }
 
-    public function hardware()
+    public function hardwares()
     {
         return $this->hasMany(Hardware::class);
     }
@@ -36,6 +36,11 @@ class Company extends Model
     public function payments()
     {
         return $this->hasMany(Payment::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
     }
 
     

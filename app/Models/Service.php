@@ -9,7 +9,17 @@ class Service extends Model
 {
     use HasFactory;
 
+    protected $table = 'services';
+
     protected $fillable=[
-        "name","service_date", "description"
+        "company_id",
+        "service_date",
+        "next_service_date", 
+        "description"
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

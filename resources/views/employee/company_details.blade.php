@@ -38,7 +38,11 @@
                 <tbody>
                     @forelse($companies as $company)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-2 border">{{ $company->name }}</td>
+                            <td class="px-4 py-2 border">
+                                <a href="{{ route('employee.company-details.show', $company) }}">
+                                    {{ $company->name }}
+                                </a>
+                            </td>
                             <td class="px-4 py-2 border">{{ $company->phone_number }}</td>
                             <td class="px-4 py-2 border">
                                 <a href="{{ $company->link }}" target="_blank" rel="noopener noreferrer">
@@ -85,7 +89,12 @@
         <div class="md:hidden space-y-4 mt-6">
             @forelse($companies as $company)
                 <div class="border rounded-lg p-4 bg-white shadow">
-                    <div><span class="font-semibold">Name:</span> {{ $company->name }}</div>
+                    
+                    <div>
+                        <a href="{{ route('employee.company-details.show', $company) }}">
+                            <span class="font-semibold">Name:</span> {{ $company->name }}
+                        </a>
+                    </div>
                     <div><span class="font-semibold">Phone:</span> {{ $company->phone_number }}</div>
                     <div><span class="font-semibold">Location:</span> {{ $company->location }}</div>
                     <div><span class="font-semibold">Assigned Employee:</span> {{ $company->employee }}</div>
