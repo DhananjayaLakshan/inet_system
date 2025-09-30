@@ -13,68 +13,56 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    
+
     public function index()
     {
         $user = Auth::user();
         $startOfWeek = Carbon::now()->startOfWeek();
         $endOfWeek = Carbon::now()->endOfWeek();
 
-        // Fetch all visits for the current week
-        $visits = CompanyVisit::with('company')
+        // Get all visits for the current week
+        $visits = CompanyVisit::with('company', 'payments')
             ->where('user_id', $user->id)
             ->whereBetween('visit_date', [$startOfWeek, $endOfWeek])
             ->get()
             ->map(function ($visit) use ($user) {
-                // Fetch payment if exists
-                $payment = Payment::where('user_id', $user->id)
-                    ->where('company_id', $visit->company_id)
-                    ->where('date', $visit->visit_date)
+                $visit->existing_payment = $visit->payments
+                    ->where('user_id', $user->id)
                     ->first();
-
-                // Mark visit as editable if payment exists or new payment can be created
-                $visit->existing_payment = $payment;
-                $visit->is_editable = true; // optional flag if you want to disable old records later
                 return $visit;
             });
 
         return view('employee.payment_details', compact('visits'));
     }
 
-
-
     public function store(Request $request)
-    {
-        foreach ($request->user_id as $visitId => $userId) {
+{
+    $userId = Auth::id();
 
-            // Check if a payment already exists for this visit
-            $payment = Payment::where('user_id', $userId)
-                ->where('company_id', $request->company_id[$visitId])
-                ->where('date', $request->date[$visitId])
-                ->first();
+    // Ensure visit_id exists and is array
+    if ($request->has('visit_id') && is_array($request->visit_id)) {
+        foreach ($request->visit_id as $key => $visitId) {
 
-            if ($payment) {
-                // Update existing payment
-                $payment->update([
-                    'amount' => $request->amount[$visitId],
-                    'description' => $request->description[$visitId] ?? null,
-                ]);
-            } else {
-                // Only create new payment if amount is provided
-                if (!empty($request->amount[$visitId])) {
-                    Payment::create([
-                        'user_id' => $userId,
-                        'company_id' => $request->company_id[$visitId],
-                        'date' => $request->date[$visitId],
-                        'amount' => $request->amount[$visitId],
-                        'description' => $request->description[$visitId] ?? null,
-                    ]);
-                }
+            // Only save if amount is provided
+            $amount = $request->amount[$key] ?? null;
+
+            if ($amount !== null && $amount !== '') {
+                Payment::updateOrCreate(
+                    ['visit_id' => $visitId, 'user_id' => $userId], // unique key
+                    [
+                        'company_id' => $request->company_id[$key],
+                        'date' => $request->date[$key],
+                        'amount' => $amount,
+                        'description' => $request->description[$key] ?? null,
+                    ]
+                );
             }
         }
-
-        return redirect()->back()->with('success', 'Payments saved successfully!');
     }
+
+    return redirect()->back()->with('success', 'Payments saved successfully!');
+}
+
 
 
 

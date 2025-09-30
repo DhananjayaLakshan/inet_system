@@ -57,6 +57,7 @@
                                 <input type="hidden" name="user_id[{{ $visit->id }}]" value="{{ auth()->id() }}">
                                 <input type="hidden" name="company_id[{{ $visit->id }}]" value="{{ $visit->company_id }}">
                                 <input type="hidden" name="date[{{ $visit->id }}]" value="{{ $visit->visit_date }}">
+                                <input type="hidden" name="visit_id[{{ $visit->id }}]" value="{{ $visit->id }}">
                             </tr>
                         @endforeach
                     </tbody>
@@ -113,6 +114,7 @@
                         <input type="hidden" name="user_id[{{ $visit->id }}]" value="{{ auth()->id() }}">
                         <input type="hidden" name="company_id[{{ $visit->id }}]" value="{{ $visit->company_id }}">
                         <input type="hidden" name="date[{{ $visit->id }}]" value="{{ $visit->visit_date }}">
+                        <input type="hidden" name="visit_id[{{ $visit->id }}]" value="{{ $visit->id }}">
                     </div>
                 @endforeach
 
