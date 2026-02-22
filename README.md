@@ -1,6 +1,6 @@
 # Employee Visit & Asset Management System
 
-A comprehensive web application built for I-Net Systems & Solutions (Pvt) Limited to manage employee work tracking, company visits, expenses, and IT asset management.
+A comprehensive web application to manage employee work tracking, company visits, expenses, and IT asset management.
 
 ## 🚀 Built With
 
